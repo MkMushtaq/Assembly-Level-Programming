@@ -1,0 +1,16 @@
+LXI H,0001H
+MVI A,0
+STA 0007H
+LDA 0000H
+MVI D,5
+MOV B,A
+LOOP: MOV A,M
+      CMP B
+      JZ AHEAD
+      INX H
+      DCR D
+      JNZ LOOP
+hlt
+AHEAD: MVI A,1
+       STA 0007H
+hlt

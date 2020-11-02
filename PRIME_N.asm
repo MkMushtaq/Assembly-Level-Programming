@@ -1,0 +1,40 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LDA 0000H
+MOV C,A
+LXI H,0001H
+MVI B,1
+CMP B
+JZ DONE
+
+LOOP: MOV A,C
+INR B
+CMP B
+JC DONE1
+MVI D,1
+
+AHEAD: MOV A,B
+INR D
+CMP D
+JZ PRINT
+
+DIV: SUB D
+JZ LOOP
+JC AHEAD;INR D
+JNC DIV
+
+PRINT: MOV M,B
+INX H
+JMP LOOP
+
+HLT
+DONE: MOV M,A
+DONE1: hlt

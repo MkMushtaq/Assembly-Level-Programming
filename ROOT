@@ -1,0 +1,36 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LXI H,0000H;
+MOV A,M
+MVI B,1
+MOV D,B
+MOV A,B
+LOOP: ADD B
+	DCR D
+	JNZ LOOP
+SUB B
+MOV D,A
+MOV A,M
+CMP D
+JC DONE1
+JZ DONE
+INR B
+MOV D,B
+MOV A,B
+JMP LOOP
+DONE: MOV A,B
+STA 0002H
+HLT
+
+DONE1: MOV A,B
+DCR A
+STA 0002H
+HLT

@@ -1,0 +1,26 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+LDA 0000H;
+MOV B,A;
+LDA 0001H;
+MOV D,A;
+MOV A,B;
+ADD D;
+
+MOV B,A
+ANI 0F
+MVI D,09
+CMP D
+JNC NEXT
+ADD 6H
+NEXT:STA 0003H;
+HLT;
+hlt

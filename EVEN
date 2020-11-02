@@ -1,0 +1,26 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+MVI A,0
+STA 0001H
+STA 0002H
+LXI H,0000H
+MOV A,M
+MVI B,2
+LOOP: SUB B
+JC ODD
+JZ EVEN
+JNC LOOP
+ODD: MVI A,1
+STA 0001H
+HLT
+EVEN: MVI A,2
+STA 0002H
+hlt
