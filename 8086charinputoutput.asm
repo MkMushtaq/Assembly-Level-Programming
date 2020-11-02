@@ -1,0 +1,36 @@
+ASSUME CS:CODE, DS:DATA
+
+DATA SEGMENT
+
+STRING1 DB 'ENTER A CHARACTER:','$'
+STRING2 DB 'YOU ENTERED:','$'
+DATA ENDS
+
+CODE SEGMENT 
+
+START: MOV AX,DATA
+       MOV DS,AX
+       MOV DX, OFFSET STRING1
+       MOV AH,09H
+       INT 21H
+
+       MOV AH, 01H
+       INT 21H
+       MOV BH,AL
+
+       MOV DL,10
+       MOV AH,02H
+       INT 21H
+
+       MOV DX,OFFSET STRING2
+       MOV AH,09H
+       INT 21H
+
+       MOV DL,BH
+       MOV AH,02H
+       INT 21H
+
+       MOV AH,4CH
+       INT 21H
+CODE ENDS
+END START
